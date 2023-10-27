@@ -3,9 +3,15 @@ STM32F4Discovery
 
 # Install
 
+This command will install Rust:
+
+`curl https://sh.rustup.rs -sSf | sh`
+
 `cargo install cargo-binutils`
 
 `rustup component add llvm-tools-preview`
+
+`rustup target add thumbv7em-none-eabihf`
 
 # Build
 
