@@ -28,12 +28,14 @@ fn main() -> ! {
         loop {
 
             // SET LED
-            write_volatile((GPIOD_BASE + 0x18) as *mut u32, read_volatile((GPIOD_BASE + 0x18) as *mut u32) | (1<<13));
+            // write_volatile((GPIOD_BASE + 0x18) as *mut u32, read_volatile((GPIOD_BASE + 0x18) as *mut u32) | (1<<13));
+            *((GPIOD_BASE + 0x18) as *mut u32) |= 1<<13;
 
             for _ in 1..200000 { asm!("NOP") };
 
             // CLEAR LED
-            write_volatile((GPIOD_BASE + 0x18) as *mut u32, read_volatile((GPIOD_BASE + 0x18) as *mut u32) | ((1<<13)<<16));
+            // write_volatile((GPIOD_BASE + 0x18) as *mut u32, read_volatile((GPIOD_BASE + 0x18) as *mut u32) | ((1<<13)<<16));
+            *((GPIOD_BASE + 0x18) as *mut u32) |= (1<<13)<<16;
 
             for _ in 1..200000 { asm!("NOP") };
         }
